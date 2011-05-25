@@ -4,11 +4,16 @@ require 'bundler/setup'
 require 'active_record'
 require 'sinatra'
 require "#{File.dirname(__FILE__)}/models/user"
+get '/' do
+    'Hello world!'
+end
+
+=begin
 
 #setting up the environment
 env_index = ARGV.index("-e")
 env_arg = ARGV[env_index + 1] if env_index
-env = env_arg || ENV["SINATRA_ENV"] || "development"
+env = env_arg || ENV["SINATRA_ENV"] || "production" || "development"
 databases = YAML.load_file("config/database.yml")
 ActiveRecord::Base.establish_connection(databases[env])
 
@@ -40,3 +45,4 @@ post '/api/v1/users' do
 	error 400, e.message.to_json
   end
 end
+=end
