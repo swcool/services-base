@@ -1,2 +1,2 @@
 require './service'
-run ServicesBase::Application
+run Sinatra::Application
