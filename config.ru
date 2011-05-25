@@ -1,4 +1,2 @@
-require './service'
-
-# can't use ServicesBase::Application
+require 'service'
 run Sinatra::Application
