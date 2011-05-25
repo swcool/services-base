@@ -24,19 +24,19 @@ describe "service" do
 	    :email => "guest@guest.com",
         :password => "strongpass",
 		:bio => "rubyist")
-	end
+	  end
 
-	it "should return a user by name" do
-	  get '/api/v1/users/guest' do
-	    last_response.should be_ok
-	    attributes = JSON.parse(last_response.body)["user"]
-	    attributes["name"].should == "guest"
+	  it "should return a user by name" do
+	    get '/api/v1/users/guest' do
+	      last_response.should be_ok
+	      attributes = JSON.parse(last_response.body)["user"]
+	      attributes["name"].should == "guest"
       end
     end
     
     it "should return a user with an email" do
-	  get '/api/v1/users/guest' do
-	    last_response.should be_ok
+	    get '/api/v1/users/guest' do
+	      last_response.should be_ok
         attributes = JSON.parse(last_response.body)["user"]
         attributes["email"].should == "guest@guest.com"
       end
@@ -59,26 +59,28 @@ describe "service" do
     end
 
     it "should return a 404 for a user that doesn't exist" do
-	  get '/api/v1/users/foo' do
+	    get '/api/v1/users/foo' do
         last_response.status.should == 404
       end
     end
   end
 
   describe "POST on /api/v1/users" do
-	it "should create a user" do
-	  post '/api/v1/users', {
-		:name => "visitor",
-		:email => "no spam",
-		:password => "whatever",
-		:bio 	  => "rails player"
+    it "should create a user" do
+	    post '/api/v1/users', {
+		    :name => "visitor",
+	      :email => "no spam",
+	      :password => "whatever",
+	      :bio 	  => "rails player"
       }.to_json
+      
       last_response.should be_ok
+      
       get '/api/v1/users/visitor' do
-		attributes = JSON.parse(last_response.body)["user"]
-		attributes["name"].should == "visitor"
-	    attributes["email"].should == "no spam"
-		attributes["bio"].should == "rails player"
+        attributes = JSON.parse(last_response.body)["user"]
+        attributes["name"].should == "visitor"
+        attributes["email"].should == "no spam"
+        attributes["bio"].should == "rails player"
       end
     end
   end
@@ -106,6 +108,7 @@ describe "service" do
         :email    => "no spam",
         :password => "whatever",
         :bio      => "williamsburg hipster")
+        
       delete '/api/v1/users/francis'
       last_response.should be_ok
       get '/api/v1/users/francis'
