@@ -6,7 +6,7 @@ require 'sinatra'
 require "#{File.dirname(__FILE__)}/models/user"
 
 get '/' do
-    "Hello world! It's #{Time.now} at the server. <br/><br/>
+    "Service Oriented Design Implementation! It's #{Time.now} at the server. <br/><br/>
     <a href='./api/v1/users/tester'>API: tester information in JSON format</a>"
 end
 
