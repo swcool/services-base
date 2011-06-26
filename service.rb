@@ -38,7 +38,7 @@ require "#{File.dirname(__FILE__)}/models/user"
   "Hellow World"
   
     auth = request.env['omniauth.auth']
-    auth.to_s
+    auth.to_json
   end
 
   post '/auth/:name/callback' do
