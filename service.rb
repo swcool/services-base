@@ -12,7 +12,7 @@ require "#{File.dirname(__FILE__)}/models/user"
   use OmniAuth::Builder do
     provider :open_id, OpenID::Store::Filesystem.new('/tmp')
     provider :facebook, '140124176062694', '3a58f182a8e0115df8814a1c63583960',
-             {:scope => 'PERMISSION_1, PERMISSION_2, PERMISSION_3...', 
+             {:scope => 'email, publish_stream', 
               :client_options => {
                 :ssl => {
                   :ca_file => './config/ca-bundle.crt'
