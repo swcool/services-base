@@ -4,6 +4,7 @@ source "http://rubygems.org"
 gem 'activerecord', '3.0.3'
 gem 'sqlite3', '1.3.3'
 gem 'sinatra', '1.2.2'
+gem 'omniauth'
 
 # client
 gem 'json', '1.4.6'

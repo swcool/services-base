@@ -1,13 +1,50 @@
 require 'rubygems'
 require 'bundler/setup'
 
+require 'omniauth'
+require 'openid/store/filesystem'
+  
 require 'active_record'
 require 'sinatra'
 require "#{File.dirname(__FILE__)}/models/user"
 
-get '/' do
+use Rack::Session::Cookie
+use OmniAuth::Builder do
+    provider :open_id, OpenID::Store::Filesystem.new('/tmp')
+    provider :facebook, 'APP_ID', 'APP_SECRET'
+    provider :twitter, 'CONSUMER_KEY', 'CONSUMER_SECRET'
+    provider :github, 'CLIENT ID', 'SECRET'
+    provider :tsina, 'CLIENT ID', 'SECRET'
+  end
+
+  get '/' do
+    <<-HTML
     "Service Oriented Design Implementation! It's #{Time.now} at the server. <br/><br/>
-    <a href='./api/v1/users/tester'>API: tester information in JSON format</a>"
+    <a href='./api/v1/users/tester'>API: tester information in JSON format</a>" <br/><br/>
+    
+    <a href='/auth/twitter'>Sign in with Twitter</a>
+    <a href='/auth/facebook'>Sign in with Facebook</a>
+
+    <form action='/auth/open_id' method='post'>
+      <input type='text' name='identifier'/>
+      <input type='submit' value='Sign in with OpenID'/>
+    </form>
+    HTML
+  end
+  
+  get '/auth/:name/callback' do
+  "Hellow World"
+  
+    auth = request.env['omniauth.auth']
+    auth.to_s
+  end
+
+  post '/auth/:name/callback' do
+    auth = request.env['omniauth.auth']
+    # do whatever you want with the information!
+  end
+get '/' do
+    
 end
 
 #setting up the environment
