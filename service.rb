@@ -22,8 +22,10 @@ use OmniAuth::Builder do
     "Service Oriented Design Implementation! It's #{Time.now} at the server. <br/><br/>
     <a href='./api/v1/users/tester'>API: tester information in JSON format</a>" <br/><br/>
     
-    <a href='/auth/twitter'>Sign in with Twitter</a>
-    <a href='/auth/facebook'>Sign in with Facebook</a>
+    <a href='/auth/twitter'>Sign in with Twitter</a>&&
+    <a href='/auth/facebook'>Sign in with Facebook</a>&&
+    <a href='/auth/tsina'>Sign in with Sina Weibo</a>&&
+    <a href='/auth/github'>Sign in with Github</a>
 
     <form action='/auth/open_id' method='post'>
       <input type='text' name='identifier'/>
