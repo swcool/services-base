@@ -21,7 +21,14 @@ require "#{File.dirname(__FILE__)}/models/user"
              }
       
     provider :twitter, 'UUVVbEaBjm0GrRkG8Mesg', 'Qxi86s8op34KQDokQMOWvjYVJmvP72JDLXur91iiI'
-    provider :github, '82e688018a15aff0c002', '38cfe0c37a1fbd4c30c02726fcd57fa0dab68c5f'
+    provider :github, '82e688018a15aff0c002', '38cfe0c37a1fbd4c30c02726fcd57fa0dab68c5f',
+               {:scope => 'email, publish_stream', 
+                  :client_options => {
+                    :ssl => {
+                      :ca_file => './config/ca-bundle.crt'
+                    }
+                  }
+                 }
     provider :tsina, '92783654', 'b8e8af30acaec274d67b119030d9e881'
   end
 
