@@ -11,10 +11,10 @@ require "#{File.dirname(__FILE__)}/models/user"
 use Rack::Session::Cookie
 use OmniAuth::Builder do
     provider :open_id, OpenID::Store::Filesystem.new('/tmp')
-    provider :facebook, 'APP_ID', 'APP_SECRET'
-    provider :twitter, 'CONSUMER_KEY', 'CONSUMER_SECRET'
-    provider :github, 'CLIENT ID', 'SECRET'
-    provider :tsina, 'CLIENT ID', 'SECRET'
+    provider :facebook, '171174192945589', '7adf9c708b4f80aee1de6a9211c68e68'
+    provider :twitter, 'UUVVbEaBjm0GrRkG8Mesg', 'Qxi86s8op34KQDokQMOWvjYVJmvP72JDLXur91iiI'
+    provider :github, '82e688018a15aff0c002', '38cfe0c37a1fbd4c30c02726fcd57fa0dab68c5f'
+    provider :tsina, '92783654', 'b8e8af30acaec274d67b119030d9e881'
   end
 
   get '/' do
