@@ -8,8 +8,8 @@ require 'active_record'
 require 'sinatra'
 require "#{File.dirname(__FILE__)}/models/user"
 
-use Rack::Session::Cookie
-use OmniAuth::Builder do
+  use Rack::Session::Cookie
+  use OmniAuth::Builder do
     provider :open_id, OpenID::Store::Filesystem.new('/tmp')
     provider :facebook, '140124176062694', '3a58f182a8e0115df8814a1c63583960'
     provider :twitter, 'UUVVbEaBjm0GrRkG8Mesg', 'Qxi86s8op34KQDokQMOWvjYVJmvP72JDLXur91iiI'
@@ -45,9 +45,6 @@ use OmniAuth::Builder do
     auth = request.env['omniauth.auth']
     # do whatever you want with the information!
   end
-get '/' do
-    
-end
 
 #setting up the environment
 env_index = ARGV.index("-e")
