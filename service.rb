@@ -11,21 +11,10 @@ require "#{File.dirname(__FILE__)}/models/user"
   use Rack::Session::Cookie
   use OmniAuth::Builder do
     provider :open_id, OpenID::Store::Filesystem.new('/tmp')
-    provider :facebook, '223154214383038', 'aa5728a3decff9e2d1fd79c92c2e05be',
-             { :client_options => {
-                 :ssl => {
-                   :ca_file => './config/ca-bundle.crt'
-                 }
-               }
-             }
-      
-    provider :twitter, 'UUVVbEaBjm0GrRkG8Mesg', 'Qxi86s8op34KQDokQMOWvjYVJmvP72JDLXur91iiI'
-    provider :github, 'dc0eeb77791a023d18ac', '967d1c7d03a657f4506b4826db85c73efccdb6cf',
-                { :client_options => {
-                    :ssl => { :verify => false } 
-                   }
-                 }
-    provider :tsina, '92783654', 'b8e8af30acaec274d67b119030d9e881'
+    provider :facebook, 'APP_ID', 'APP_SECRET'
+    provider :twitter, 'CONSUMER_KEY', 'CONSUMER_SECRET'
+    provider :github, 'CLIENT ID', 'SECRET'
+    provider :tsina, 'CLIENT ID', 'SECRET'
   end
 
   get '/' do
